@@ -5,7 +5,11 @@ import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import ArticleIcon from '@mui/icons-material/Article';
 import StoryCircle from './StoryCircle';
-const story = [11,1,1,1,1,1]
+import PostCard from '../Post/PostCard';
+
+
+const story = [11,1,1,1,1,1];
+const post = [1,1,1,1,1,1,1,1];
 
 const MidlePart = () => {
 
@@ -61,6 +65,12 @@ const MidlePart = () => {
             
           </div>
 
+        </Card>
+        <Card>
+          <div className='mt-5 space-y-5'>
+            {post.map((item)=><PostCard/>)}
+            
+          </div>
         </Card>
     </div>
   )

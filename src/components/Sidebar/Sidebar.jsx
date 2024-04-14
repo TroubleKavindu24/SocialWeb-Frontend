@@ -36,7 +36,7 @@ const Sidebar = () => {
             <Avatar src={ProfilePic}/>
             <div>
               <p className='font-bold'>Kavindu Rukshan</p>
-              <p className='opacity-70'>@Kavindurukshan</p>
+              <p className='opacity-70'>@kavindurukshan</p>
             </div>
           </div>
             <Button
