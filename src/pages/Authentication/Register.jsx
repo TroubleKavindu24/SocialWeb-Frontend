@@ -6,6 +6,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React, { useState } from 'react'
 import * as Yup from "yup"
+import { useDispatch } from 'react-redux';
+import { loginUserAction, registerUserAction } from '../../Redux/Auth/auth.action';
 
 const initialValues={firstName:"", lastName:"", email:"", password:"", gender:""}
 const validationSchema={email:Yup.string().email("Invalid email").required("Email is required"),
@@ -14,10 +16,13 @@ const validationSchema={email:Yup.string().email("Invalid email").required("Emai
 const Register = () => {
 
     const [gender, setGender] =useState("");
+    const dispatch = useDispatch();
 
     const handleSubmit=(values)=>{
         values.gender=gender
-        console.log("handle submit",values)
+        console.log("handle submit",values);
+
+        dispatch(registerUserAction({data:values}))
     };
 
     const handleChange = (event) => {

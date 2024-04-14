@@ -18,8 +18,8 @@ const Authentication = () => {
                              <h1 className='log'>Social Web for Fitness</h1>
                              <p className='text-center text-sm w-[70&]'>explore others fitness and give mortivation these</p>
                         </div>
-                       {/* <Login/> */}
-                       <Register />
+                       <Login/>
+                       {/* <Register /> */}
                     </Card>
                 </div>
             </Grid>
