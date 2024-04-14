@@ -1,7 +1,7 @@
 import { Card, Grid } from '@mui/material'
 import React from 'react'
 import Login from './Login'
-import Register from './Register'
+//import Register from './Register'
 import ui1 from '../../images/ui1.jpeg'
 
 const Authentication = () => {

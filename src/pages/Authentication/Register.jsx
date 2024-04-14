@@ -5,14 +5,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import React, { useState } from 'react'
-import * as Yup from "yup"
+//import * as Yup from "yup"
 import { useDispatch } from 'react-redux';
-import { loginUserAction, registerUserAction } from '../../Redux/Auth/auth.action';
+import { registerUserAction } from '../../Redux/Auth/auth.action';
 
 const initialValues={firstName:"", lastName:"", email:"", password:"", gender:""}
-const validationSchema={email:Yup.string().email("Invalid email").required("Email is required"),
-                        password:Yup.string().min(6,"Password must be at least 6 characters").required("Password is required"),
-                    };
+//const validationSchema={email:Yup.string().email("Invalid email").required("Email is required"),
+                    //     password:Yup.string().min(6,"Password must be at least 6 characters").required("Password is required"),
+                    // };
 const Register = () => {
 
     const [gender, setGender] =useState("");

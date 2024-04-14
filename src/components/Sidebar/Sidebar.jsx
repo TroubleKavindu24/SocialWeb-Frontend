@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigationMenu } from './SidebarNavigation'
-import { Avatar, Button, Divider, Menu, MenuItem } from '@mui/material'
+import { Avatar, Button, Card, Divider, Menu, MenuItem } from '@mui/material'
 import ProfilePic from '../../images/profilePic.jpeg';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className='card h-screen flex flex-col justify-between py-5'>
+    <Card className='card h-screen flex flex-col justify-between py-5'>
       <div className='space-y-8 pl-5'>
         <div className=''>
           <span className='logo font-bold text-xl'>Kavindu Official</span>
@@ -63,7 +63,7 @@ const Sidebar = () => {
             </Menu>
         </div>
       </div>
-    </div>
+    </Card>
   )
 }
 
