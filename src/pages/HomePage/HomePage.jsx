@@ -1,11 +1,12 @@
 import { Grid } from '@mui/material';
 import React from 'react';
-import Sidebar from '../../components/Sidebar';
+import Sidebar from '../../components/Sidebar/Sidebar';
 import { Route, Routes, useLocation } from "react-router-dom";
 import MiddlePart from '../../components/MiddlePart/MidlePart';
 import Reels from '../../components/Reels/Reels';
 import Profile from '../../components/Profile/Profile';
 import CreateReelsFrom from '../../components/Reels/CreateReelsForm';
+import HomeRight from '../../components/HomeRight/HomeRight';
 
 const HomePage = () => {
 
@@ -40,6 +41,13 @@ const HomePage = () => {
             <Route path='/profile/:id' element={<Profile/>}/>
 
           </Routes>
+        </Grid>
+
+        <Grid item lg={3} className='relative'>
+
+          <div className='sticky top-0 w-full'>
+            <HomeRight />
+          </div>
           
         </Grid>
 
