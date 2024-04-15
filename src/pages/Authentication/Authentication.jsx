@@ -1,8 +1,9 @@
 import { Card, Grid } from '@mui/material'
 import React from 'react'
 import Login from './Login'
-//import Register from './Register'
+import Register from './Register'
 import ui1 from '../../images/ui1.jpeg'
+import { Route, Routes } from 'react-router-dom'
 
 const Authentication = () => {
   return (
@@ -18,8 +19,12 @@ const Authentication = () => {
                              <h1 className='log'>Social Web for Fitness</h1>
                              <p className='text-center text-sm w-[70&]'>explore others fitness and give mortivation these</p>
                         </div>
-                       <Login/>
-                       {/* <Register /> */}
+
+                        <Routes>
+                            <Route path='/' element={<Login/>}></Route>
+                            <Route path='/login' element={<Login/>}></Route>
+                            <Route path='/register' element={<Register/>}></Route>
+                        </Routes>
                     </Card>
                 </div>
             </Grid>

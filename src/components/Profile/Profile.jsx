@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+//import { useParams } from 'react-router-dom';
 import Post2 from '../../images/regUI.jpeg';
 import Post1 from '../../images/ui1.jpeg';
 import { Avatar, Box, Button, Card, Tab, Tabs } from '@mui/material';
@@ -18,7 +18,7 @@ const reels = [1,1,1,1,1];
 const savedPost = [1,1,1,];
 
 const Profile = () => {
-  const {id} = useParams();
+  //const {id} = useParams();
 
   const [value, setValue] = React.useState('post');
 
