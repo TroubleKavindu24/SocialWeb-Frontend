@@ -4,6 +4,7 @@ import Post2 from '../../images/regUI.jpeg';
 import Post1 from '../../images/ui1.jpeg';
 import { Avatar, Box, Button, Card, Tab, Tabs } from '@mui/material';
 import PostCard from '../../components/Post/PostCard'
+import UserReelCard from '../Reels/UserReelCard';
 
 const tabs=[
   {value:"post", name:"Post"},
@@ -13,6 +14,8 @@ const tabs=[
 ]
 
 const posts = [1,1,1,1,1];
+const reels = [1,1,1,1,1];
+const savedPost = [1,1,1,];
 
 const Profile = () => {
   const {id} = useParams();
@@ -88,16 +91,31 @@ const Profile = () => {
         </Box>
 
         <div className='flex justify-center'>
-          {value==="post"? (<div className='space-y-5 w-[70%] my-10'>
+          {value==="post"? (
+          <div className='space-y-5 w-[70%] my-10'>
             {posts.map((item)=>(
               <div className='border border-slate-100 rounded-md'>
               <PostCard />
             </div>
             ))}
-          </div>):value==="reels"?<div className='flex gap-3'>
-
-          </div>:(
-            ""
+          </div>
+          ):value==="reels"? <div className='flex justify-center flex-wrap gap-2 my-10'>
+            {reels.map((item)=><UserReelCard/>)}
+          </div>:value==="reels"? <div className='flex justify-center flex-wrap gap-2 my-10'>
+            {reels.map((item)=><UserReelCard/>
+          )}
+        </div>:value==="saved"? (
+          <div className='space-y-5 w-[70%] my-10'>
+            {savedPost.map((item)=>(
+              <div className='border border-slate-100 rounded-md'>
+              <PostCard />
+            </div>
+            ))}
+          </div>
+            ):(
+              <div>
+                Repost
+              </div>
             )}
         </div>
         </section>
