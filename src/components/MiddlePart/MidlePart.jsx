@@ -1,11 +1,12 @@
 import { Avatar, Card, IconButton } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import ArticleIcon from '@mui/icons-material/Article';
 import StoryCircle from './StoryCircle';
 import PostCard from '../Post/PostCard';
+import CreatePostModal from '../CreatePost/CreatePostModal';
 
 
 const story = [11,1,1,1,1,1];
@@ -13,8 +14,12 @@ const post = [1,1,1,1,1,1,1,1];
 
 const MidlePart = () => {
 
+  const [openCreatePostModal, setOpenCreatePostModal] = useState();
+  const handleCloseCreatePostModal = () => setOpenCreatePostModal(false);
+
   const handleOpenCreatePostModal = () =>{
-    console.log("Open post Model...");
+    setOpenCreatePostModal(true);
+    console.log("Open post Model...",openCreatePostModal);
   }
 
   return (
@@ -35,6 +40,7 @@ const MidlePart = () => {
           <div className='flex justify-between'>
               <Avatar/>
               <input 
+                onClick={handleOpenCreatePostModal}
                 readOnly 
                 className='outline-none w-[90%] rounded-full px-5 bg-transparent border-[#3b4054] border' 
                 type="text" 
@@ -66,12 +72,13 @@ const MidlePart = () => {
           </div>
 
         </Card>
-        <Card>
           <div className='mt-5 space-y-5'>
             {post.map((item)=><PostCard/>)}
             
           </div>
-        </Card>
+          <div>
+            <CreatePostModal handleClose={handleCloseCreatePostModal} open={openCreatePostModal}/>
+          </div>
     </div>
   )
 }
