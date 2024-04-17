@@ -3,6 +3,7 @@ import { Formik, useFormik } from 'formik';
 import React, { useState } from 'react';
 import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
+import { uploadToCloudinary } from '../../utils/uploadToCloudniry';
 
 const style = {
     position: 'absolute',
@@ -23,9 +24,14 @@ const CreatePostModal = ({handleClose, open}) => {
   const [selectedVideo, setSelectedVideo] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSelectImage = ()=>{
-    
-  }
+  const handleSelectImage = async(event)=>{
+    setIsLoading(true);
+    const imageUrl = await uploadToCloudinary(event.target.files
+      [0],"image")
+      setSelectedImage(imageUrl);
+      setIsLoading(false);
+      formik.setFieldValue("image", imageUrl)
+  };
 
   const handleSelectVideo = ()=>{
 
@@ -79,7 +85,7 @@ const CreatePostModal = ({handleClose, open}) => {
                     id='image-input'/>
                     
                     <label htmlFor="image-input">
-                      <IconButton color='primary'>
+                      <IconButton color='primary' component="span">
                         <ImageIcon/>
                       </IconButton>
                     </label>
