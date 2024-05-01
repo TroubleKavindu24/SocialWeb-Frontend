@@ -22,13 +22,13 @@ const savedPost = [1,1,1,];
 
 const Profile = () => {
   const {id} = useParams();
-
+  const [value, setValue] = React.useState('post');
   const [open, setOpen] = useState(false);
   const handleOpenProfileModal = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const {auth} = useSelector(store=>store);
-  const [value, setValue] = React.useState('post');
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);

@@ -14,15 +14,19 @@ function App() {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getProfileAction(jwt))
-  },[jwt])
+  },[])
 
   return (
     <div className="">
         <Routes>
-          {/* <Route path='/*' element={auth.user?<HomePage/>:<Authentication/>}/> */}
+          {/* <Route path='/*' element={auth.user?<HomePage/>:<Authentication/>}/>
           <Route path='/*' element={<HomePage/>}/>
+          <Route path='/message' element={<Message/>}/>
+          <Route path='/*' element={<Authentication/>}/> */}
+          
+          <Route path='/*' element={auth.user?<HomePage/>:<Authentication/>}/>
           <Route path='/message' element={<Message/>}/>
           <Route path='/*' element={<Authentication/>}/>
         </Routes>

@@ -10,15 +10,15 @@ export const loginUserAction=(loginData)=>async(dispatch)=>{
             loginData.data
         );
 
-        if (data.token) {
-            localStorage.setItem("jwt",data.token);
+        if (data.jwt) {
+            localStorage.setItem("jwt",data.jwt);
         }
         
         console.log("Login success", data);
         dispatch({type:LOGIN_SUCCESS, payload:data.jwt});
 
     } catch (error) {
-        console.log("-----------", error);
+        console.log("Login fail-----------", error);
         dispatch({type:LOGIN_FAILURE, payload:error});
     }
 };
@@ -29,10 +29,10 @@ export const loginUserAction=(loginData)=>async(dispatch)=>{
 export const registerUserAction=(loginData)=>async(dispatch)=>{
     dispatch({type:LOGIN_REQUEST});
     try {
-        const {data}=await axios.post(`${API_BASE_URL}/signup`,loginData.data);
+        const {data}=await axios.post(`${API_BASE_URL}/auth/signup`,loginData.data);
 
-        if (data.token) {
-            localStorage.setItem("jwt",data.token);
+        if (data.jwt) {
+            localStorage.setItem("jwt",data.jwt);
         }
         console.log("register----", data);
 
@@ -45,21 +45,20 @@ export const registerUserAction=(loginData)=>async(dispatch)=>{
 };
 
 
-export const getProfileAction=(jwt)=>async(dispatch)=>{
+
+
+
+export const getProfileAction=(jwt) => async(dispatch) => {
     dispatch({type:GET_PROFILE_REQUEST});
     try {
         const {data}=await axios.get(`${API_BASE_URL}/api/users/profile`,
         {
             headers:{
-                "Authorization":`Bearer ${jwt}`,
+                Authorization:`Bearer ${jwt}`,
             },
         });
-
-        
         console.log("profile----", data);
-
         dispatch({type:GET_PROFILE_SUCCESS, payload:data});
-
     } catch (error) {
         console.log("-----------", error);
         dispatch({type:GET_PROFILE_FAILURE, payload:error});
@@ -70,7 +69,7 @@ export const getProfileAction=(jwt)=>async(dispatch)=>{
 export const updateProfileAction=(reqData)=>async(dispatch)=>{
     dispatch({type:UPDATE_PROFILE_REQUEST});
     try {
-        const {data}=await api.get(`${API_BASE_URL}/api/users`, reqData);
+        const {data}=await api.post(`${API_BASE_URL}/api/users`, reqData);
     
         console.log("update profile----", data);
 

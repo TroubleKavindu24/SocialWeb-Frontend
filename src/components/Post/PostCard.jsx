@@ -10,7 +10,7 @@ import React from 'react';
 import { red } from '@mui/material/colors';
 import Post1 from '../../images/ui1.jpeg';
 
-const PostCard = () => {
+const PostCard = ({item}) => {
   return (
     <Card className=''>
         <CardHeader
@@ -24,8 +24,10 @@ const PostCard = () => {
                 <MoreVertIcon />
             </IconButton>
             }
-            title="Kavindu Rukshan"
-            subheader="@kavindurukshan"
+            // title={item.user.firstName+" "+item.user.lastName}
+            // subheader={"@"+item.user.firstName.toLowerCase()+"_"+item.user.lastName.toLowerCase()}
+            title={"kavindu"}
+            subheader={"kkkkkk"}
         />
         <CardMedia
             component="img"
@@ -36,9 +38,7 @@ const PostCard = () => {
 
         <CardContent>
             <Typography variant="body2" color="text.secondary">
-                This impressive paella is a perfect party dish and a fun meal to cook
-                together with your guests. Add 1 cup of frozen peas along with the mussels,
-                if you like.
+                {"item.caption"}
             </Typography>
         </CardContent>
 
@@ -61,8 +61,80 @@ const PostCard = () => {
                 </IconButton>
             </div>
       </CardActions>
+      <section>
+        <div className='flex items-center space-x-5 mx-3 my-5'>
+            <Avatar sx={{}}/>
+
+            <input className='w-full outline-none bg-transparent border border-[#3b4054] rounded-full px-5 py-2' type="text" placeholder='write your comment...'/>
+        </div>
+      </section>
     </Card>
   )
 }
 
 export default PostCard
+
+
+
+// const PostCard = ({ item }) => {
+//     return (
+//       <Card className=''>
+//         <CardHeader
+//           avatar={
+//             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+//               R
+//             </Avatar>
+//           }
+//           action={
+//             <IconButton aria-label="settings">
+//               <MoreVertIcon />
+//             </IconButton>
+//           }
+//           title={item.user?.firstName && item.user?.lastName ? `${item.user.firstName} ${item.user.lastName}` : 'Unknown User'}
+//           subheader={item.user?.firstName && item.user?.lastName ? `@${item.user.firstName.toLowerCase()}_${item.user.lastName.toLowerCase()}` : ''}
+//         />
+//         <CardMedia
+//           component="img"
+//           height="194"
+//           image={item.image}
+//           alt="Paella dish"
+//         />
+  
+//         <CardContent>
+//           <Typography variant="body2" color="text.secondary">
+//             {item.caption}
+//           </Typography>
+//         </CardContent>
+  
+//         <CardActions className='flex justify-between' disableSpacing>
+//           <div>
+//             <IconButton>
+//               {true ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+//             </IconButton>
+//             <IconButton>
+//               {<ShareIcon />}
+//             </IconButton>
+  
+//             <IconButton>
+//               {<ChatBubbleIcon />}
+//             </IconButton>
+//           </div>
+//           <div>
+//             <IconButton>
+//               {true ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+//             </IconButton>
+//           </div>
+//         </CardActions>
+//         <section>
+//           <div className='flex items-center space-x-5 mx-3 my-5'>
+//             <Avatar sx={{}} />
+  
+//             <input className='w-full outline-none bg-transparent border border-[#3b4054] rounded-full px-5 py-2' type="text" placeholder='write your comment...' />
+//           </div>
+//         </section>
+//       </Card>
+//     )
+//   }
+  
+//   export default PostCard;
+  
