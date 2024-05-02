@@ -13,15 +13,28 @@ export const createPostAction = (postData) => async(dispatch) => {
     }
 };
 
-export const getAllPostAction = () => async(dispatch) => {
-    dispatch({type:GET_ALL_POST_REQUEST})
+// export const getAllPostAction = () => async (dispatch) => {
+//     dispatch({type:GET_ALL_POST_REQUEST})
+//     try {
+//         const {data} = await api.get('/api/posts');
+//         dispatch({type : GET_ALL_POST_SUCCESS, playload:data});
+//         console.log("get all post ",data);
+//     } catch (error) {
+//         console.log("error ", error);
+//         dispatch({ type:GET_ALL_POST_FAILURE, playload:error })
+//     }
+// };
+
+
+export const getAllPostAction = () => async (dispatch) => {
+    dispatch({ type: GET_ALL_POST_REQUEST })
     try {
-        const {data} = await api.get('/api/posts');
-        dispatch({type:GET_ALL_POST_SUCCESS,playload:data});
-        console.log("get all post ",data);
+        const { data } = await api.get('/api/posts');
+        dispatch({ type: GET_ALL_POST_SUCCESS, payload: data }); // Corrected payload spelling
+        console.log("get all post ", data);
     } catch (error) {
-        console.log("error ",error);
-        dispatch({type:GET_ALL_POST_FAILURE,playload:error})
+        console.log("error ", error);
+        dispatch({ type: GET_ALL_POST_FAILURE, payload: error }) // Corrected payload spelling
     }
 };
 

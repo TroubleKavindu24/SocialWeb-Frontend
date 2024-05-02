@@ -12,7 +12,7 @@ import { getAllPostAction } from '../../Redux/Post/post.action';
 
 
 const story = [11,1,1,1,1,1];
-const posts = [1,1,1,1,1,1,1,1];
+const posts = [1,1,1,1,1];
 
 const MidlePart = () => {
   const dispatch = useDispatch();
@@ -20,9 +20,8 @@ const MidlePart = () => {
   
   console.log("post store",post);
 
-  const [openCreatePostModal, setOpenCreatePostModal] = useState();
+  const [openCreatePostModal, setOpenCreatePostModal] = useState(false);
   const handleCloseCreatePostModal = () => setOpenCreatePostModal(false);
-
   const handleOpenCreatePostModal = () =>{
     setOpenCreatePostModal(true);
     console.log("Open post Model...",openCreatePostModal);
@@ -82,10 +81,16 @@ const MidlePart = () => {
           </div>
 
         </Card>
-          <div className='mt-5 space-y-5'>
-            {posts.map((item)=><PostCard item={item}/>)}
+          {/* <div className='mt-5 space-y-5'>
+            {post.posts.map((item)=><PostCard item={item}/>)}
             
+          </div> */}
+          <div className='mt-5 space-y-5'>
+            {post.posts?.map((item) => <PostCard item={item} />)}
           </div>
+
+
+
           <div>
             <CreatePostModal handleClose={handleCloseCreatePostModal} open={openCreatePostModal}/>
           </div>

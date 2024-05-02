@@ -10,8 +10,8 @@ export const loginUserAction=(loginData)=>async(dispatch)=>{
             loginData.data
         );
 
-        if (data.jwt) {
-            localStorage.setItem("jwt",data.jwt);
+        if (data.token) {
+            localStorage.setItem("jwt",data.token);
         }
         
         console.log("Login success", data);
@@ -31,8 +31,8 @@ export const registerUserAction=(loginData)=>async(dispatch)=>{
     try {
         const {data}=await axios.post(`${API_BASE_URL}/auth/signup`,loginData.data);
 
-        if (data.jwt) {
-            localStorage.setItem("jwt",data.jwt);
+        if (data.token) {
+            localStorage.setItem("jwt",data.token);
         }
         console.log("register----", data);
 

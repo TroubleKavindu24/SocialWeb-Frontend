@@ -1,10 +1,11 @@
 import { Avatar, Backdrop, Box, Button, CircularProgress, IconButton, Modal, Typography } from '@mui/material'
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import ImageIcon from '@mui/icons-material/Image';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import { uploadToCloudinary } from '../../utils/uploadToCloudniry';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const style = {
     position: 'absolute',
@@ -25,6 +26,7 @@ const CreatePostModal = ({handleClose, open}) => {
   const [selectedVideo, setSelectedVideo] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
+  const {auth} = useSelector(store=>store);
 
   const handleSelectImage = async(event)=>{
     setIsLoading(true);
@@ -55,6 +57,8 @@ const CreatePostModal = ({handleClose, open}) => {
       dispatch(createPostAction(values))
     }
   });
+
+
   return (
     <div>
         <Modal
@@ -69,8 +73,8 @@ const CreatePostModal = ({handleClose, open}) => {
               <div className='flex space-x-4 items-center'>
                 <Avatar />
                 <div>
-                  <p className='font-bold text-lg'>Kavindu Rukshan</p>
-                  <p className='text-sm'>@kavindurukshan</p>
+                  <p className='font-bold text-lg'>{auth.user?.firstName +" "+auth.user?.lastName}</p>
+                  <p className='text-sm'>@{auth.user?.firstName.toLowerCase() +"_"+ auth.user?.lastName.toLowerCase()}</p>
                 </div>
               </div>
               <textarea
@@ -139,7 +143,8 @@ const CreatePostModal = ({handleClose, open}) => {
         </Box>
       </Modal>
     </div>
-  )
-}
+    )
+  }
+
 
 export default CreatePostModal

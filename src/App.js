@@ -4,9 +4,9 @@ import Authentication from './pages/Authentication/Authentication';
 import HomePage from './pages/HomePage/HomePage';
 import Message from './pages/Message/Message';
 import { useDispatch, useSelector } from 'react-redux';
-import { store } from './Redux/store';
 import { useEffect } from 'react';
 import { getProfileAction } from './Redux/Auth/auth.action';
+
 
 function App() {
 
@@ -21,11 +21,6 @@ function App() {
   return (
     <div className="">
         <Routes>
-          {/* <Route path='/*' element={auth.user?<HomePage/>:<Authentication/>}/>
-          <Route path='/*' element={<HomePage/>}/>
-          <Route path='/message' element={<Message/>}/>
-          <Route path='/*' element={<Authentication/>}/> */}
-          
           <Route path='/*' element={auth.user?<HomePage/>:<Authentication/>}/>
           <Route path='/message' element={<Message/>}/>
           <Route path='/*' element={<Authentication/>}/>
