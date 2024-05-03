@@ -9,7 +9,7 @@ const PopolarUserCard = () => {
         <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            MK
           </Avatar>
         }
         action={
