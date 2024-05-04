@@ -11,12 +11,13 @@ import { red } from '@mui/material/colors';
 import Post1 from '../../images/ui1.jpeg';
 import { useDispatch, useSelector } from 'react-redux';
 import { createCommentAction, likePostAction } from '../../Redux/Post/post.action';
+import { isLikedByReqUser } from '../../utils/isLikedByReqUser';
 
 const PostCard = ({item}) => {
     const [showComments, setShowComments] = useState(false);
     const dispatch = useDispatch();
 
-    const {post} =useSelector(store=>store);
+    const {post, auth} =useSelector(store=>store);
 
     const handleShowComment = () => setShowComments(!showComments);
 
@@ -34,6 +35,8 @@ const PostCard = ({item}) => {
         dispatch(likePostAction(item.id))
     }
 
+    
+    console.log("Is Liked ", isLikedByReqUser(auth.user.id, item));
   return (
     <Card className=''>
         <CardHeader
@@ -47,26 +50,31 @@ const PostCard = ({item}) => {
                 <MoreVertIcon />
             </IconButton>
             }
-            title={item.user.firstName+" "+item.user.lastName}
-            subheader={"@"+item.user.firstName.toLowerCase()+"_"+item.user.lastName.toLowerCase()}
+            //title={item.user.firstName+" "+item.user.lastName}
+            //subheader={"@"+item.user.firstName.toLowerCase()+"_"+item.user.lastName.toLowerCase()}
+            title={auth.user?.firstName +" "+auth.user?.lastName}
+            subheader={"@"+auth.user?.firstName.toLowerCase() +" "+ auth.user?.lastName.toLowerCase()}
+            
         />
-        <CardMedia
+        {/* <CardMedia
             component="img"
-            height="194"
+            height="100"
             image={item.image}
             alt="Paella dish"
-        />
+        /> */}
+
+        <img className='w-full max-h-[30rem] object-cover object-top' src={item?.image} alt="" />
 
         <CardContent>
             <Typography variant="body2" color="text.secondary">
-                {item.caption}
+                {item?.caption}
             </Typography>
         </CardContent>
 
         <CardActions className='flex justify-between' disableSpacing>
             <div>
                 <IconButton onClick={handleLikePost}>
-                    {false?<FavoriteIcon/>:<FavoriteBorderIcon/>}
+                    {isLikedByReqUser(auth.user.id, item)?<FavoriteIcon/>:<FavoriteBorderIcon/>}
                 </IconButton>
                 <IconButton>
                     {<ShareIcon/>}

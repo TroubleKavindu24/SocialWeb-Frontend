@@ -21,7 +21,7 @@ const reels = [1,1,1,1,1];
 const savedPost = [1,1,1,];
 
 const Profile = () => {
-  const {id} = useParams();
+//   const {id} = useParams();
   const [value, setValue] = React.useState('post');
   const [open, setOpen] = React.useState(false);
   const handleOpenProfileModal = () => setOpen(true);

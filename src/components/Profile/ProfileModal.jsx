@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
@@ -28,9 +27,9 @@ const style = {
 export default function ProfileModal({open, handleClose}) {
     const dispatch = useDispatch();
 
-    const handleSubmit = (values)=>{
-        console.log("values", values)
-    }
+    // const handleSubmit = (values)=>{
+    //     console.log("values", values)
+    // }
 
     const formik = useFormik({
         initialValues: {
