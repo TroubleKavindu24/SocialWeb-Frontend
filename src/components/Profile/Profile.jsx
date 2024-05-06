@@ -16,11 +16,17 @@ const tabs=[
 ]
 
 
-const posts = [1,1,1,1,1];
+// const posts = [1,1,1,1,1];
 const reels = [1,1,1,1,1];
 const savedPost = [1,1,1,];
 
 const Profile = () => {
+
+    const {post} = useSelector(store=>store);//added
+    console.log("post store",post);//added
+
+
+
 //   const {id} = useParams();
   const [value, setValue] = React.useState('post');
   const [open, setOpen] = React.useState(false);
@@ -93,11 +99,7 @@ const Profile = () => {
                   <div className='flex justify-center'>
                       {value === "post" ? (
                           <div className='space-y-5 w-[70%] my-10'>
-                              {posts.map((item) => (
-                                  <div className='border border-slate-100 rounded-md'>
-                                      <PostCard />
-                                  </div>
-                              ))}
+                              {post.posts?.map((item) => <PostCard item={item} />)}
                           </div>
                       ) : value === "reels" ? (
                           <div className='flex justify-center flex-wrap gap-2 my-10'>
